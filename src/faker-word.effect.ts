@@ -5,7 +5,8 @@ import { faker } from '@faker-js/faker';
 import EffectType = Effects.EffectType;
 
 interface EffectModel {
-	faker_method: string
+	method: string,
+	description: string
 }
 
 const effect: EffectType<EffectModel> = {
@@ -27,17 +28,16 @@ const effect: EffectType<EffectModel> = {
 	optionsTemplate: template,
 	optionsController: ($scope, backendCommunicator: any, $q: any) => {
 		const faker_methods = backendCommunicator.fireEventSync('words-get-methods');
-		$scope.faker_method = faker_methods;
+		$scope.faker_methods = faker_methods;
 
-		if ($scope.effect.faker_method == null) {
-			$scope.effect.faker_method = faker_methods[0];
+		if ($scope.effect.method == null) {
+			$scope.effect.method = faker_methods[0];
 		}
 	},
 	onTriggerEvent: async scope => {
 		const effect = scope.effect;
+		const method = effect.method;
 
-		const method = effect.faker_method;
-		
 		modules.logger.error(`Faker module: words, method: ${method}: ${faker.word.words()}`);
 	}
 };

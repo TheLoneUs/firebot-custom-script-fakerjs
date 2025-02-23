@@ -19,7 +19,7 @@
 	<p>Faker method.</p>
 	<ui-select ng-model="effect.faker_method">
 		<ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
-		<ui-select-choices repeat="method in methods | filter: $select.search">
+		<ui-select-choices repeat="method in faker_methods | filter: $select.search">
 			<div>
 				<strong ng-bind-html="method.method | highlight: $select.search"></strong>
 				<em ng-bind-html="'(' + method.method + ')' | highlight: $select.search"></em>

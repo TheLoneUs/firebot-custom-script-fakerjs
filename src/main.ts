@@ -30,7 +30,7 @@ const script: Firebot.CustomScript<Params> = {
 			return [
 				{
 					method: "word",
-					descriptions: "Get some dan ol words."
+					description: "Get some dan ol words."
 				}
 			];
 		});
