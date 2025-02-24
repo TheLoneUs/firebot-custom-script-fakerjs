@@ -1,0 +1,30 @@
+<style>
+	ul.sub-data {
+		list-style: none;
+		display: table;
+		padding-left: 0;
+	}
+
+	ul.sub-data li {
+		display: table-row;
+	}
+
+	ul.sub-data li b {
+		display: table-cell;
+		padding-right: 1em;
+	}
+</style>
+
+<eos-container header="Module" pad-top="true">
+	<p>Faker <a href="https://fakerjs.dev/api/" target="_blank">module</a>.</p>
+	<ui-select ng-model="effect.faker_modules">
+		<ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
+		<ui-select-choices repeat="module in faker_modules | filter: $select.search">
+			<div>
+				<strong ng-bind-html="module.name | highlight: $select.search"></strong>
+				<em ng-bind-html="'(' + module.name + ')' | highlight: $select.search"></em>
+			</div>
+			<small ng-bind-html="module.description | highlight: $select.search"></small>
+		</ui-select-choices>
+	</ui-select>
+</eos-container>

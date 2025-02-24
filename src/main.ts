@@ -1,5 +1,6 @@
 import { Firebot, ScriptModules } from '@crowbartools/firebot-custom-scripts-types';
 import { autoload } from './autoload';
+import { faker } from '@faker-js/faker';
 import { EventSource } from '@crowbartools/firebot-custom-scripts-types/types/modules/event-manager';
 
 interface Params {}
@@ -26,13 +27,14 @@ const script: Firebot.CustomScript<Params> = {
 		autoload(runRequest.modules, eventSource);
 		modules = runRequest.modules;
 
-		modules.frontendCommunicator.on('words-get-methods', () => {
-			return [
-				{
-					method: "word",
-					description: "Get some dan ol words."
-				}
-			];
+		modules.frontendCommunicator.on('get-faker-modules', () => {
+			return Object.keys(faker.definitions).map((key) => (
+					{
+						name: key,
+						description: `Generate fake ${key} data.`
+					}
+				)
+			);
 		});
 	}
 };

@@ -13,3 +13,7 @@
 
 ### How to use
 TODO
+
+### Special Thanks
+- [Lordmau5](https://github.com/Lordmau5)
+    - For their work on https://github.com/Lordmau5/firebot-script-elevenlabs-tts which was very helpful in understanding custom scripts.
