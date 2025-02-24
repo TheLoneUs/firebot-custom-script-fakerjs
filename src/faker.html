@@ -15,8 +15,7 @@
 	}
 </style>
 
-<eos-container header="Module" pad-top="true">
-	<p>Faker <a href="https://fakerjs.dev/api/" target="_blank">module</a>.</p>
+<eos-container header="Faker Module" pad-top="true">
 	<ui-select ng-model="effect.faker_modules">
 		<ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
 		<ui-select-choices repeat="module in faker_modules | filter: $select.search">
@@ -27,4 +26,5 @@
 			<small ng-bind-html="module.description | highlight: $select.search"></small>
 		</ui-select-choices>
 	</ui-select>
+	<a href="https://fakerjs.dev/api/" target="_blank"><i class="fad fa-book-open"></i></a>
 </eos-container>
