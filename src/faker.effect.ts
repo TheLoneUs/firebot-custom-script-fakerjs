@@ -35,7 +35,7 @@ const effect: EffectType<EffectModel> = {
                 </li>
             </ul>
         </div>
-		<a href="https://fakerjs.dev/api/" target="_blank"><i class="fad fa-book-open"></i></a>
+		<a href="https://fakerjs.dev/api/{{effect.module.name ? effect.module.name + '.html' : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
 	</eos-container>
 	`,
 	optionsController: ($scope, backendCommunicator: any, $q: any) => {
