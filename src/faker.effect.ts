@@ -35,12 +35,47 @@ const effect: EffectType<EffectModel> = {
                 </li>
             </ul>
         </div>
-		<a href="https://fakerjs.dev/api/{{effect.module.name ? effect.module.name + '.html' : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
+		<a href="https://fakerjs.dev/api/{{effect.module.name ? effect.module.name : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
 	</eos-container>
 	`,
-	optionsController: ($scope, backendCommunicator: any, $q: any) => {
-		const faker_modules = backendCommunicator.fireEventSync('get-faker-modules');
-		$scope.faker_modules = faker_modules;
+	optionsController: ($scope) => {
+		const known_modules = [
+			"airline",
+			"animal",
+			"book",
+			"color",
+			"commerce",
+			"company",
+			"database",
+			"datatype",
+			"date",
+			"finance",
+			"food",
+			"git",
+			"hacker",
+			"helpers",
+			"image",
+			"internet",
+			"location",
+			"lorem",
+			"music",
+			"number",
+			"person",
+			"phone",
+			"science",
+			"string",
+			"system",
+			"vehicle",
+			"word"
+		];
+
+		$scope.faker_modules = known_modules.map((value) => (
+				{
+					name: value,
+					description: `Generate fake ${value} data.`
+				}
+			)
+		);
 	},
 	onTriggerEvent: async scope => {
 		const effect = scope.effect;
