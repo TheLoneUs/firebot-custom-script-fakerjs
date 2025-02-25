@@ -2,8 +2,6 @@ name: Build TypeScript Project
 
 on:
   push:
-      branches:
-        - main
       tags:
         - 'v*'  # Trigger the workflow with a tag like 'v1.0.0'
 
@@ -31,6 +29,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/**/*.js  # Adjust path to your built JavaScript files
+            dist/*.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
