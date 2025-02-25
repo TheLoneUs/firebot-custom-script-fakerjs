@@ -15,13 +15,12 @@ module.exports = {
 		libraryTarget: 'commonjs2',
 		libraryExport: 'default',
 		path: path.resolve(__dirname, './dist'),
-		filename: `${ packageJson.scriptOutputName }.js`
+		filename: `${packageJson.scriptOutputName}.js`
 	},
 	resolve: {
 		extensions: [
 			'.ts',
-			'.js',
-			'.html'
+			'.js'
 		]
 	},
 	module: {
@@ -29,17 +28,13 @@ module.exports = {
 			{
 				test: /\.ts$/,
 				loader: 'ts-loader'
-			},
-			{
-				test: /\.html$/i,
-				loader: 'raw-loader'
 			}
 		]
 	},
 	optimization: {
 		minimize: true,
 
-		minimizer: [ new TerserPlugin({
+		minimizer: [new TerserPlugin({
 			terserOptions: {
 				keep_fnames: /main/,
 				mangle: false,
@@ -48,6 +43,6 @@ module.exports = {
 				}
 			},
 			extractComments: false
-		}) ]
+		})]
 	}
 };

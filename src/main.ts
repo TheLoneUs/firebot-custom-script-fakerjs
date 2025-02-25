@@ -2,7 +2,7 @@ import { Firebot, ScriptModules } from '@crowbartools/firebot-custom-scripts-typ
 import { autoload } from './autoload';
 import { EventSource } from '@crowbartools/firebot-custom-scripts-types/types/modules/event-manager';
 
-interface Params {}
+interface Params { }
 
 const script: Firebot.CustomScript<Params> = {
 	getScriptManifest: () => {
