@@ -1,8 +1,8 @@
 {
-	"name": "firebot-custom-script-fakerjs",
-	"scriptOutputName": "firebot-custom-script-fakerjs",
-	"version": "0.1.0",
-	"description": "A custom script that allows FakerJS to be used in Firebot.",
+	"name": "firebot-faker",
+	"scriptOutputName": "firebot-faker",
+	"version": "0.9.1",
+	"description": "A custom script that wraps FakerJS for use in Firebot.",
 	"main": "",
 	"scripts": {
 		"build": "webpack",

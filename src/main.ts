@@ -7,10 +7,10 @@ interface Params { }
 const script: Firebot.CustomScript<Params> = {
 	getScriptManifest: () => {
 		return {
-			name: 'FakerJS by MattachineGG on Twitch',
-			description: 'Custom script for generating fake data.',
+			name: 'MattachineGG\'s Faker',
+			description: 'A custom script for generating fake data.',
 			author: 'MattachineGG',
-			version: '0.1.0',
+			version: '0.9.1',
 			firebotVersion: '5'
 		};
 	},
@@ -19,7 +19,7 @@ const script: Firebot.CustomScript<Params> = {
 	},
 	run: async runRequest => {
 		const eventSource: EventSource = {
-			id: 'fakerjs',
+			id: 'faker',
 			name: 'Fake Data',
 			events: []
 		};
