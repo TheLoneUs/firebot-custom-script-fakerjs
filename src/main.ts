@@ -10,7 +10,7 @@ const script: Firebot.CustomScript<Params> = {
 			name: 'MattachineGG\'s Faker',
 			description: 'A custom script for generating fake data.',
 			author: 'MattachineGG',
-			version: '0.9.2',
+			version: '0.9.3',
 			firebotVersion: '5'
 		};
 	},
