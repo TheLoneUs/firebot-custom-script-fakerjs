@@ -1,8 +1,10 @@
 name: Build TypeScript Project
 
 on:
-    push:
-        tags:
+  push:
+      branches:
+        - main
+      tags:
         - 'v*'  # Trigger the workflow with a tag like 'v1.0.0'
 
 jobs:
