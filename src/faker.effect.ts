@@ -2,8 +2,7 @@ import { Effects } from '@crowbartools/firebot-custom-scripts-types/types/effect
 import EffectType = Effects.EffectType;
 
 interface EffectModel {
-	module: string,
-	description: string
+	module: string
 }
 
 const effect: EffectType<EffectModel> = {
@@ -23,59 +22,70 @@ const effect: EffectType<EffectModel> = {
 		}]
 	},
 	optionsTemplate: `
-	<eos-container header="Faker Module" pad-top="true">
+	<eos-container header="Select a FakerJS Module" pad-top="true">
 		<div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="faker-effect-type">{{effect.module.name ? effect.module.name : 'Pick one'}}</span> <span class="caret"></span>
+                <span class="faker-effect-type">{{effect.module ? effect.module : 'Pick one'}}</span> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu faker-effect-dropdown">
                 <li ng-repeat="module in faker_modules"
-                    ng-click="effect.module.name = module.name">
+                    ng-click="effect.module = module.name">
                     <a href>{{module.name}}</a>
                 </li>
             </ul>
         </div>
-		<a href="https://fakerjs.dev/api/{{effect.module.name ? effect.module.name : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
+		<a href="https://fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#') : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
 	</eos-container>
 	`,
 	optionsController: ($scope) => {
 		const known_modules = [
-			"airline",
-			"animal",
-			"book",
-			"color",
-			"commerce",
-			"company",
-			"database",
-			"datatype",
-			"date",
-			"finance",
-			"food",
-			"git",
-			"hacker",
-			"helpers",
-			"image",
-			"internet",
-			"location",
-			"lorem",
-			"music",
-			"number",
-			"person",
-			"phone",
-			"science",
-			"string",
-			"system",
-			"vehicle",
-			"word"
+			// "airline",
+			// "animal",
+			// "book",
+			// "color",
+			// "commerce",
+			// "company",
+			// "database",
+			// "datatype",
+			// "date",
+			// "finance",
+			// "food",
+			// "git",
+			// "hacker",
+			// "helpers",
+			// "image",
+			// "internet",
+			// "location",
+			// "lorem",
+			// "music",
+			// "number",
+			// "person",
+			// "phone",
+			// "science",
+			// "string",
+			// "system",
+			// "vehicle",
+			"word.adjective",
+			"word.adverb",
+			"word.conjunction",
+			"word.interjection",
+			"word.noun",
+			"word.preposition",
+			"word.sample",
+			"word.verb",
+			"word.words"
 		];
 
-		$scope.faker_modules = known_modules.map((value) => (
-				{
-					name: value,
-					description: `Generate fake ${value} data.`
-				}
-			)
-		);
+		$scope.faker_modules = known_modules.map((value) => ({ name: value }));
+	},
+	optionsValidator: effect => {
+		const errors: string[] = [];
+
+		if (!effect.module?.length) {
+			errors.push('Please select a module.');
+		}
+
+		return errors;
 	},
 	onTriggerEvent: async scope => {
 		const effect = scope.effect;
