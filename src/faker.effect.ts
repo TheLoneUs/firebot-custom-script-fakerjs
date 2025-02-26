@@ -3,6 +3,7 @@ import EffectType = Effects.EffectType;
 import { faker } from '@faker-js/faker';
 
 interface EffectModel {
+	module_parent: string,
 	module: string,
 	options: object | number
 }
@@ -24,13 +25,24 @@ const effect: EffectType<EffectModel> = {
 		}]
 	},
 	optionsTemplate: `
-	<eos-container header="Select a Faker Module" pad-top="true">
+	<eos-container header="Select a Faker Module & Method" pad-top="true">
 		<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="faker-effect-type">{{effect.module_parent ? effect.module_parent : 'Pick one'}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu faker-effect-dropdown">
+                <li ng-repeat="module_parent in faker_module_parents"
+                    ng-click="effect.module_parent = module_parent.name; effect.module = null">
+                    <a href>{{module_parent.name}}</a>
+                </li>
+            </ul>
+        </div>
+		<div class="btn-group" ng-show="effect.module_parent">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="faker-effect-type">{{effect.module ? effect.module : 'Pick one'}}</span> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu faker-effect-dropdown">
-                <li ng-repeat="module in faker_modules"
+                <li ng-repeat="module in faker_modules | filter: {name: effect.module_parent + '.'}"
                     ng-click="effect.module = module.name">
                     <a href>{{module.name}}</a>
                 </li>
@@ -339,6 +351,7 @@ const effect: EffectType<EffectModel> = {
 			}
 		};
 
+		$scope.faker_module_parents = Object.keys(known_modules).map(name => ({ name }));
 		$scope.faker_modules = Object.entries(known_modules).flatMap(([module_name, methods]) =>
 			Object.keys(methods).map(method => ({ name: `${module_name}.${method}` }))
 		);
