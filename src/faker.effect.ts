@@ -35,7 +35,7 @@ const effect: EffectType<EffectModel> = {
                 </li>
             </ul>
         </div>
-		<a href="https://fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#') : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
+		<a href="https://fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#').toLowerCase() : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
 	</eos-container>
 	`,
 	optionsController: ($scope) => {

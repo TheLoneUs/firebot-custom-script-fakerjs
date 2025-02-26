@@ -1,7 +1,7 @@
 {
 	"name": "firebot-faker",
 	"scriptOutputName": "firebot-faker",
-	"version": "0.9.3",
+	"version": "0.9.4",
 	"description": "A custom script that wraps FakerJS for use in Firebot.",
 	"main": "",
 	"scripts": {
