@@ -4,7 +4,6 @@ module.exports = {
 	plugins: [
 		'@stylistic',
 		'@typescript-eslint',
-		'html'
 	],
 	extends: [
 		'eslint:recommended',
