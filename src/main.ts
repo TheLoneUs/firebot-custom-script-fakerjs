@@ -14,9 +14,7 @@ const script: Firebot.CustomScript<Params> = {
 			firebotVersion: '5'
 		};
 	},
-	getDefaultParameters: () => {
-		return {};
-	},
+	getDefaultParameters: () => ({}),
 	run: async runRequest => {
 		const eventSource: EventSource = {
 			id: 'faker',
