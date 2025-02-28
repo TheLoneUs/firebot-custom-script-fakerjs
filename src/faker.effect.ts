@@ -374,7 +374,7 @@ Faker will typically return a single string when no options are supplied."
 			errors.push('Please select a module.');
 		}
 
-		if (effect.options.length) {
+		if (effect.options?.length) {
 			try {
 				// Attempt to parse options if it's a string
 				if (typeof effect.options === 'string' && effect.options.trim() !== '') {
