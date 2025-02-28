@@ -21,6 +21,4 @@ The script is in BETA so testers are welcome, feel free to report any issues you
       See [FakerJS API Reference](https://fakerjs.dev/api/) for specific information.
 
 ### Roadmap
-1. Add ability to pass options into the faker library.
-    - Allows things like min/max length or word count.
-2. General project cleanup.
+1. General project cleanup.
