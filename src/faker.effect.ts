@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 interface EffectModel {
 	module_parent: string,
 	module: string,
-	options: object | number
+	options: string
 }
 
 const effect: EffectType<EffectModel> = {
@@ -49,6 +49,17 @@ const effect: EffectType<EffectModel> = {
             </ul>
         </div>
 		<a href="https://fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#').toLowerCase() : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
+	</eos-container>
+	<eos-container header="Options" pad-top="true">
+		<firebot-input
+			model="effect.options"
+			use-text-area="true"
+			placeholder-text="(Optional)
+See FakerJS documentation linked above for request options.
+Faker will typically return a single string when no options are supplied."
+			rows="10"
+			cols="40">
+		</firebot-input>
 	</eos-container>
 	`,
 	optionsController: ($scope) => {
@@ -363,6 +374,17 @@ const effect: EffectType<EffectModel> = {
 			errors.push('Please select a module.');
 		}
 
+		if (effect.options.length) {
+			try {
+				// Attempt to parse options if it's a string
+				if (typeof effect.options === 'string' && effect.options.trim() !== '') {
+					JSON.parse(effect.options);
+				}
+			} catch (error) {
+				errors.push('Invalid options format. Please provide a valid JSON object or array.');
+			}
+		}
+
 		return errors;
 	},
 	onTriggerEvent: async scope => {
@@ -381,7 +403,15 @@ const effect: EffectType<EffectModel> = {
 		}
 
 		if (typeof result === 'function') {
-			const fakerData = result();
+			let options = scope.effect.options;
+			let fakerData: any = null;
+
+			if (typeof options === 'string' && options.trim() !== '') {
+				options = JSON.parse(options);
+				fakerData = result(options);
+			} else {
+				fakerData = result();
+			}
 
 			return {
 				success: true,
