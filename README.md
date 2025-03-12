@@ -1,7 +1,7 @@
 # [MattachineGG](https://allmylinks.com/mattachinegg)\'s Faker - A Custom Firebot Script
 A script designed to help you get random data of all sorts in [Firebot](https://firebot.app/)!
 
-The script is in BETA so testers are welcome, feel free to report any issues you may find.
+Feel free to report any issues you may find [here](https://github.com/TheLoneUs/firebot-custom-script-fakerjs/issues).
 
 ### How to install
 1. Download the latest release of [firebot-faker.js](https://github.com/TheLoneUs/firebot-custom-script-fakerjs/releases/latest/download/firebot-faker.js)
