@@ -18,7 +18,7 @@ The script is in BETA so testers are welcome, feel free to report any issues you
 1. Add a `Faker` event and select which module you would like to use.
 2. Use the output `$effectOutput[fakerData]` from the command however you'd like!
     - Data may be returned as a simple string or a JSON object depending on the module.
-      See [FakerJS API Reference](https://fakerjs.dev/api/) for specific information.
+      See [FakerJS API Reference](https://v9.fakerjs.dev/api/) for specific information.
 
 ### Roadmap
 1. Add ability to pass options into the faker library.

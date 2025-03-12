@@ -48,7 +48,7 @@ const effect: EffectType<EffectModel> = {
                 </li>
             </ul>
         </div>
-		<a href="https://fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#').toLowerCase() : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
+		<a href="https://v9.fakerjs.dev/api/{{effect.module ? effect.module.split('.').join('#').toLowerCase() : ''}}" target="_blank"><i class="fad fa-book-open"></i> Documentation</a>
 	</eos-container>
 	<eos-container header="Options" pad-top="true">
 		<firebot-input
@@ -64,7 +64,7 @@ Faker will typically return a single string when no options are supplied."
 	`,
 	optionsController: ($scope) => {
 		// TODO: It would be nice to get this dynamically, if possible, including the methods parameters.
-		// https://fakerjs.dev/api/
+		// https://https://v9.fakerjs.dev/api/
 		const known_modules = {
 			"airline": {
 				"aircraftType": {},
